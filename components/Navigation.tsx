@@ -20,7 +20,7 @@ export function Navigation() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border-subtle bg-surface-base/95 backdrop-blur supports-[backdrop-filter]:bg-surface-base/80">
+    <nav className="sticky top-0 z-50 border-b border-border-subtle bg-surface-base backdrop-blur-xl">
       <div className="mx-auto max-w-md px-4">
         {/* Desktop/Tablet Header */}
         <div className="flex h-14 items-center justify-between">
@@ -66,7 +66,7 @@ export function Navigation() {
         </div>
 
         {/* Mobile Bottom Nav */}
-        <div className="sm:hidden fixed bottom-0 left-0 right-0 border-t border-border-subtle bg-surface-base/95 backdrop-blur supports-[backdrop-filter]:bg-surface-base/80 px-4 pb-safe">
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 border-t border-border-subtle bg-surface-base backdrop-blur-xl px-4 pb-safe">
           <div className="mx-auto max-w-md">
             <div className="grid grid-cols-3 gap-2 py-2">
               {navItems.map((item) => (
