@@ -17,7 +17,7 @@ create table public.profiles (
 -- Create sessions table
 create table public.sessions (
   id uuid default gen_random_uuid() primary key,
-  user_id uuid references auth.users(id) on delete cascade not null,
+  user_id uuid references public.profiles(id) on delete cascade not null,
   date date not null,
   gym text not null,
   gi_type text not null check (gi_type in ('gi', 'nogi')),

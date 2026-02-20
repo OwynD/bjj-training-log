@@ -21,11 +21,11 @@ export function Navigation() {
   ]
 
   return (
-    <nav className="bg-gray-800 border-b border-gray-700">
+    <nav className="bg-gi-darker border-b border-gray-800 shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
-            <Link href="/feed" className="text-xl font-bold text-white">
+            <Link href="/feed" className="text-xl font-bold text-white tracking-tight">
               BJJ Log
             </Link>
             <div className="hidden md:flex items-center gap-4">
@@ -34,7 +34,7 @@ export function Navigation() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                    className="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-md hover:shadow-lg"
                   >
                     {item.label}
                   </Link>
@@ -44,8 +44,8 @@ export function Navigation() {
                     href={item.href}
                     className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       pathname === item.href
-                        ? 'bg-gray-700 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                        ? 'bg-gi-dark text-gold-400 border border-gold-600/30'
+                        : 'text-gray-300 hover:bg-gi-dark hover:text-white'
                     }`}
                   >
                     {item.label}
@@ -56,7 +56,7 @@ export function Navigation() {
           </div>
           <button
             onClick={handleSignOut}
-            className="text-gray-400 hover:text-white text-sm transition-colors"
+            className="text-gray-400 hover:text-gold-400 text-sm transition-colors font-medium"
           >
             Sign Out
           </button>
@@ -64,13 +64,13 @@ export function Navigation() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-gray-700 px-4 py-3 flex gap-2">
+      <div className="md:hidden border-t border-gray-800 px-4 py-3 flex gap-2">
         {navItems.map((item) => (
           item.primary ? (
             <Link
               key={item.href}
               href={item.href}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-center transition-colors text-sm"
+              className="flex-1 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-white px-4 py-2 rounded-lg font-medium text-center transition-all text-sm"
             >
               {item.label}
             </Link>
@@ -80,8 +80,8 @@ export function Navigation() {
               href={item.href}
               className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium text-center transition-colors ${
                 pathname === item.href
-                  ? 'bg-gray-700 text-white'
-                  : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  ? 'bg-gi-dark text-gold-400 border border-gold-600/30'
+                  : 'text-gray-300 hover:bg-gi-dark hover:text-white'
               }`}
             >
               {item.label}

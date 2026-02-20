@@ -29,6 +29,11 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
+  // Don't interfere with auth routes
+  if (request.nextUrl.pathname.startsWith('/auth')) {
+    return supabaseResponse
+  }
+
   // Refresh session if expired
   const { data: { user } } = await supabase.auth.getUser()
 

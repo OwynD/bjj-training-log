@@ -55,7 +55,7 @@ export default function NewSessionPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 p-4">
+    <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
       <div className="max-w-2xl mx-auto pt-8">
         <div className="mb-6">
           <button
@@ -66,11 +66,11 @@ export default function NewSessionPage() {
           </button>
         </div>
 
-        <div className="bg-gray-800 rounded-lg shadow-xl p-6">
+        <div className="bg-gi-darker rounded-lg shadow-2xl p-6 border border-gray-800">
           <h1 className="text-2xl font-bold text-white mb-6">Log Training Session</h1>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-900/50 border border-red-700 rounded-lg">
+            <div className="mb-6 p-4 bg-red-900/30 border border-red-800 rounded-lg">
               <p className="text-red-200 text-sm">{error}</p>
             </div>
           )}
@@ -87,7 +87,7 @@ export default function NewSessionPage() {
                 value={formData.date}
                 onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                 required
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition"
               />
             </div>
 
@@ -103,7 +103,7 @@ export default function NewSessionPage() {
                 onChange={(e) => setFormData({ ...formData, gym: e.target.value })}
                 required
                 placeholder="Gym name"
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition"
               />
             </div>
 
@@ -118,8 +118,8 @@ export default function NewSessionPage() {
                   onClick={() => setFormData({ ...formData, giType: 'gi' })}
                   className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
                     formData.giType === 'gi'
-                      ? 'bg-blue-600 text-white ring-2 ring-blue-400'
-                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                      ? 'bg-belt-blue text-white ring-2 ring-belt-blue/50 shadow-lg'
+                      : 'bg-gi-dark text-gray-300 hover:bg-mat-900 border border-gray-800'
                   }`}
                 >
                   Gi
@@ -129,8 +129,8 @@ export default function NewSessionPage() {
                   onClick={() => setFormData({ ...formData, giType: 'nogi' })}
                   className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
                     formData.giType === 'nogi'
-                      ? 'bg-blue-600 text-white ring-2 ring-blue-400'
-                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                      ? 'bg-belt-purple text-white ring-2 ring-belt-purple/50 shadow-lg'
+                      : 'bg-gi-dark text-gray-300 hover:bg-mat-900 border border-gray-800'
                   }`}
                 >
                   No-Gi
@@ -151,7 +151,7 @@ export default function NewSessionPage() {
                 onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
                 required
                 placeholder="60"
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition"
               />
             </div>
 
@@ -166,7 +166,7 @@ export default function NewSessionPage() {
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                 rows={4}
                 placeholder="What did you work on today?"
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent resize-none transition"
               />
             </div>
 
@@ -174,7 +174,7 @@ export default function NewSessionPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="w-full bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 disabled:from-gray-700 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-gi-dark shadow-lg"
             >
               {loading ? 'Saving...' : 'Save Session'}
             </button>

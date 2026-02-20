@@ -89,7 +89,7 @@ function MyLogContent() {
   const nogiSessions = sessions.filter(s => s.gi_type === 'nogi').length
 
   return (
-    <div className="min-h-screen bg-gray-900 p-4">
+    <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
       <div className="max-w-4xl mx-auto pt-8">
         {/* Header */}
         <div className="mb-8">
@@ -100,20 +100,20 @@ function MyLogContent() {
         {/* Stats */}
         {!loading && totalSessions > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
               <div className="text-2xl font-bold text-white mb-1">{totalSessions}</div>
               <div className="text-sm text-gray-400">Total Sessions</div>
             </div>
-            <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
               <div className="text-2xl font-bold text-white mb-1">{Math.round(totalMinutes / 60)}h</div>
               <div className="text-sm text-gray-400">Total Time</div>
             </div>
-            <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-              <div className="text-2xl font-bold text-blue-400 mb-1">{giSessions}</div>
+            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
+              <div className="text-2xl font-bold text-belt-blue mb-1">{giSessions}</div>
               <div className="text-sm text-gray-400">Gi Sessions</div>
             </div>
-            <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-              <div className="text-2xl font-bold text-purple-400 mb-1">{nogiSessions}</div>
+            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
+              <div className="text-2xl font-bold text-belt-purple mb-1">{nogiSessions}</div>
               <div className="text-sm text-gray-400">No-Gi Sessions</div>
             </div>
           </div>
@@ -122,11 +122,11 @@ function MyLogContent() {
         {/* Sessions List */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block w-8 h-8 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-gray-700 border-t-gold-500 rounded-full animate-spin"></div>
             <p className="text-gray-400 mt-4">Loading your sessions...</p>
           </div>
         ) : sessions.length === 0 ? (
-          <div className="text-center py-12 bg-gray-800 rounded-lg border border-gray-700">
+          <div className="text-center py-12 bg-gi-darker rounded-lg border border-gray-800">
             <svg className="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
@@ -134,7 +134,7 @@ function MyLogContent() {
             <p className="text-gray-400 mb-6">Start logging your training to track your progress!</p>
             <Link
               href="/sessions/new"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+              className="inline-block bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-white font-semibold py-2 px-6 rounded-lg transition-all shadow-md hover:shadow-lg"
             >
               Log Your First Session
             </Link>
@@ -169,9 +169,9 @@ export default function MyLogPage() {
     <>
       <Navigation />
       <Suspense fallback={
-        <div className="min-h-screen bg-gray-900 p-4">
+        <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
           <div className="max-w-4xl mx-auto pt-8 text-center">
-            <div className="inline-block w-8 h-8 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin"></div>
+            <div className="inline-block w-8 h-8 border-4 border-gray-700 border-t-gold-500 rounded-full animate-spin"></div>
           </div>
         </div>
       }>

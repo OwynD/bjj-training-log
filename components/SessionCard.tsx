@@ -24,7 +24,7 @@ export function SessionCard({ session, showUser = false, onDelete, isDeleting = 
   }
 
   return (
-    <div className="bg-gray-800 rounded-lg p-5 border border-gray-700 hover:border-gray-600 transition-colors">
+    <div className="bg-gi-darker rounded-lg p-5 border border-gray-800 hover:border-gold-600/50 transition-all duration-200 hover:shadow-lg hover:shadow-gold-900/20">
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
@@ -34,8 +34,8 @@ export function SessionCard({ session, showUser = false, onDelete, isDeleting = 
             </h3>
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${
               session.gi_type === 'gi' 
-                ? 'bg-blue-900/50 text-blue-200 border border-blue-700' 
-                : 'bg-purple-900/50 text-purple-200 border border-purple-700'
+                ? 'bg-belt-blue/20 text-belt-blue border border-belt-blue/30' 
+                : 'bg-belt-purple/20 text-belt-purple border border-belt-purple/30'
             }`}>
               {session.gi_type === 'gi' ? 'Gi' : 'No-Gi'}
             </span>
@@ -55,7 +55,7 @@ export function SessionCard({ session, showUser = false, onDelete, isDeleting = 
       {/* Body */}
       <div className="space-y-2 mb-4">
         <div className="flex items-center gap-2 text-gray-300">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span className="text-sm">{session.duration_min} minutes</span>
@@ -69,16 +69,16 @@ export function SessionCard({ session, showUser = false, onDelete, isDeleting = 
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-end gap-2 pt-3 border-t border-gray-700">
+      <div className="flex items-center justify-end gap-2 pt-3 border-t border-gray-800">
         <Link
           href={`/sessions/${session.id}`}
-          className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+          className="text-sm text-gold-400 hover:text-gold-300 transition-colors font-medium"
         >
           View details
         </Link>
         {onDelete && (
           <>
-            <span className="text-gray-600">•</span>
+            <span className="text-gray-700">•</span>
             <button
               onClick={() => onDelete(session.id)}
               disabled={isDeleting}

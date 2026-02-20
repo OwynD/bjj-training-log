@@ -52,7 +52,7 @@ export default function SessionDetailPage() {
         .from('sessions')
         .select(`
           *,
-          profiles (
+          profiles!user_id (
             id,
             display_name,
             created_at
@@ -61,7 +61,13 @@ export default function SessionDetailPage() {
         .eq('id', params.id as string)
         .single()
 
-      if (error) throw error
+      if (error) {
+        // Don't throw on "not found" - that's expected
+        if (error.code !== 'PGRST116') {
+          throw error
+        }
+        return
+      }
       setSession(data as SessionWithProfile)
     } catch (error) {
       // Silently fail in preview mode
@@ -116,7 +122,7 @@ export default function SessionDetailPage() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gray-900 p-4">
+      <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
         <div className="max-w-3xl mx-auto pt-8">
           {loading ? (
             <div className="text-center py-12">

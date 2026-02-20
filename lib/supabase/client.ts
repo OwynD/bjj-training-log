@@ -1,4 +1,4 @@
-import { createClient as createSupabaseClient } from '@supabase/supabase-js'
+import { createBrowserClient } from '@supabase/ssr'
 import type { Database } from '../database.types'
 
 export function createClient() {
@@ -13,7 +13,7 @@ export function createClient() {
     throw new Error('Missing Supabase environment variables')
   }
 
-  return createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey)
+  return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
 }
 
 export type TypedSupabaseClient = ReturnType<typeof createClient>
