@@ -55,30 +55,33 @@ export default function NewSessionPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
-      <div className="max-w-2xl mx-auto pt-8">
+    <div className="min-h-screen bg-surface-base pb-24 md:pb-4">
+      <div className="max-w-2xl mx-auto px-4 pt-24 md:pt-8">
         <div className="mb-6">
           <button
             onClick={() => router.back()}
-            className="text-gray-400 hover:text-white transition-colors"
+            className="text-sm text-text-tertiary hover:text-text-primary transition-colors flex items-center gap-1.5"
           >
-            ← Back
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
           </button>
         </div>
 
-        <div className="bg-gi-darker rounded-lg shadow-2xl p-6 border border-gray-800">
-          <h1 className="text-2xl font-bold text-white mb-6">Log Training Session</h1>
+        <div className="bg-surface-elevated rounded-lg border border-border-subtle p-6">
+          <h1 className="text-xl font-semibold text-text-primary mb-6">Log Training Session</h1>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-900/30 border border-red-800 rounded-lg">
-              <p className="text-red-200 text-sm">{error}</p>
+            <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-md">
+              <p className="text-sm text-red-400">{error}</p>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Date */}
             <div>
-              <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="date" className="block text-xs font-medium text-text-secondary mb-2">
                 Date
               </label>
               <input
@@ -87,13 +90,13 @@ export default function NewSessionPage() {
                 value={formData.date}
                 onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                 required
-                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition"
+                className="w-full px-3 py-2 bg-surface-base border border-border-default rounded-md text-sm text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-1 focus:ring-accent-gold focus:border-accent-gold transition"
               />
             </div>
 
             {/* Gym */}
             <div>
-              <label htmlFor="gym" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="gym" className="block text-xs font-medium text-text-secondary mb-2">
                 Gym
               </label>
               <input
@@ -103,23 +106,23 @@ export default function NewSessionPage() {
                 onChange={(e) => setFormData({ ...formData, gym: e.target.value })}
                 required
                 placeholder="Gym name"
-                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition"
+                className="w-full px-3 py-2 bg-surface-base border border-border-default rounded-md text-sm text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-1 focus:ring-accent-gold focus:border-accent-gold transition"
               />
             </div>
 
             {/* Gi Type */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-xs font-medium text-text-secondary mb-2">
                 Type
               </label>
-              <div className="flex gap-4">
+              <div className="inline-flex p-0.5 bg-surface-base border border-border-default rounded-md">
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, giType: 'gi' })}
-                  className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
+                  className={`px-3 py-1.5 text-xs font-medium rounded transition-all ${
                     formData.giType === 'gi'
-                      ? 'bg-belt-blue text-white ring-2 ring-belt-blue/50 shadow-lg'
-                      : 'bg-gi-dark text-gray-300 hover:bg-mat-900 border border-gray-800'
+                      ? 'bg-surface-elevated text-text-primary shadow-sm'
+                      : 'text-text-tertiary hover:text-text-secondary'
                   }`}
                 >
                   Gi
@@ -127,10 +130,10 @@ export default function NewSessionPage() {
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, giType: 'nogi' })}
-                  className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
+                  className={`px-3 py-1.5 text-xs font-medium rounded transition-all ${
                     formData.giType === 'nogi'
-                      ? 'bg-belt-purple text-white ring-2 ring-belt-purple/50 shadow-lg'
-                      : 'bg-gi-dark text-gray-300 hover:bg-mat-900 border border-gray-800'
+                      ? 'bg-surface-elevated text-text-primary shadow-sm'
+                      : 'text-text-tertiary hover:text-text-secondary'
                   }`}
                 >
                   No-Gi
@@ -140,7 +143,7 @@ export default function NewSessionPage() {
 
             {/* Duration */}
             <div>
-              <label htmlFor="duration" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="duration" className="block text-xs font-medium text-text-secondary mb-2">
                 Duration (minutes)
               </label>
               <input
@@ -151,13 +154,13 @@ export default function NewSessionPage() {
                 onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
                 required
                 placeholder="60"
-                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition"
+                className="w-full px-3 py-2 bg-surface-base border border-border-default rounded-md text-sm text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-1 focus:ring-accent-gold focus:border-accent-gold transition"
               />
             </div>
 
             {/* Notes */}
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="notes" className="block text-xs font-medium text-text-secondary mb-2">
                 Notes (optional)
               </label>
               <textarea
@@ -166,7 +169,7 @@ export default function NewSessionPage() {
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                 rows={4}
                 placeholder="What did you work on today?"
-                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent resize-none transition"
+                className="w-full px-3 py-2 bg-surface-base border border-border-default rounded-md text-sm text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-1 focus:ring-accent-gold focus:border-accent-gold resize-none transition"
               />
             </div>
 
@@ -174,7 +177,7 @@ export default function NewSessionPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 disabled:from-gray-700 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-gi-dark shadow-lg"
+              className="w-full bg-accent-gold hover:bg-accent-gold/90 disabled:bg-surface-higher disabled:text-text-tertiary disabled:cursor-not-allowed text-surface-base text-sm font-medium py-2.5 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-surface-elevated"
             >
               {loading ? 'Saving...' : 'Save Session'}
             </button>

@@ -44,17 +44,17 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gi-black via-gi-dark to-mat-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-surface-base p-4">
       <div className="w-full max-w-md">
-        <div className="bg-gi-darker rounded-lg shadow-2xl p-8 border border-gray-800">
+        <div className="bg-surface-elevated rounded-lg border border-border-subtle p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">BJJ Training Log</h1>
-            <p className="text-gray-400">Track your journey on the mats</p>
+            <h1 className="text-2xl font-semibold text-text-primary mb-1 tracking-tight">BJJ Training Log</h1>
+            <p className="text-sm text-text-tertiary">Track your journey on the mats</p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="email" className="block text-xs font-medium text-text-secondary mb-2">
                 Email address
               </label>
               <input
@@ -63,7 +63,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-gi-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition"
+                className="w-full px-3 py-2 bg-surface-base border border-border-default rounded-md text-sm text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-1 focus:ring-accent-gold focus:border-accent-gold transition"
                 placeholder="you@example.com"
                 disabled={loading}
               />
@@ -71,10 +71,10 @@ export default function LoginPage() {
 
             {message && (
               <div
-                className={`p-4 rounded-lg ${
+                className={`p-3 rounded-md ${
                   message.type === 'error'
-                    ? 'bg-red-900/30 border border-red-800 text-red-200'
-                    : 'bg-gold-900/30 border border-gold-700 text-gold-200'
+                    ? 'bg-red-500/10 border border-red-500/20 text-red-400'
+                    : 'bg-accent-gold/10 border border-accent-gold/20 text-accent-gold'
                 }`}
               >
                 <p className="text-sm">{message.text}</p>
@@ -84,13 +84,13 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 disabled:from-gray-700 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-gi-dark shadow-lg"
+              className="w-full bg-accent-gold hover:bg-accent-gold/90 disabled:bg-surface-higher disabled:text-text-tertiary disabled:cursor-not-allowed text-surface-base text-sm font-medium py-2.5 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2 focus:ring-offset-surface-elevated"
             >
               {loading ? 'Sending magic link...' : 'Send magic link'}
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-gray-400">
+          <p className="mt-6 text-center text-xs text-text-tertiary">
             No password needed. We&apos;ll email you a magic link to sign in.
           </p>
         </div>

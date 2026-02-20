@@ -122,20 +122,20 @@ export default function SessionDetailPage() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
-        <div className="max-w-3xl mx-auto pt-8">
+      <div className="min-h-screen bg-surface-base pb-24 md:pb-4">
+        <div className="max-w-3xl mx-auto px-4 pt-24 md:pt-8">
           {loading ? (
-            <div className="text-center py-12">
-              <div className="inline-block w-8 h-8 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin"></div>
-              <p className="text-gray-400 mt-4">Loading session...</p>
+            <div className="text-center py-16">
+              <div className="inline-block w-6 h-6 border-2 border-border-subtle border-t-accent-gold rounded-full animate-spin"></div>
+              <p className="text-sm text-text-tertiary mt-3">Loading session...</p>
             </div>
           ) : !session ? (
-            <div className="text-center py-12 bg-gray-800 rounded-lg border border-gray-700">
-              <h3 className="text-xl font-semibold text-white mb-2">Session not found</h3>
-              <p className="text-gray-400 mb-6">This session may have been deleted.</p>
+            <div className="text-center py-16 bg-surface-elevated rounded-lg border border-border-subtle">
+              <h3 className="text-sm font-medium text-text-primary mb-1">Session not found</h3>
+              <p className="text-sm text-text-tertiary mb-6">This session may have been deleted.</p>
               <button
                 onClick={() => router.back()}
-                className="text-blue-400 hover:text-blue-300"
+                className="text-sm text-accent-gold hover:text-accent-gold/80 transition-colors"
               >
                 Go back
               </button>
@@ -145,45 +145,45 @@ export default function SessionDetailPage() {
               <div className="mb-6">
                 <button
                   onClick={() => router.back()}
-                  className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  className="text-sm text-text-tertiary hover:text-text-primary transition-colors flex items-center gap-1.5"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                   Back
                 </button>
               </div>
 
-              <div className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+              <div className="bg-surface-elevated rounded-lg border border-border-subtle overflow-hidden">
                 {/* Header */}
-                <div className="p-6 border-b border-gray-700">
+                <div className="p-6 border-b border-border-subtle">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h1 className="text-3xl font-bold text-white mb-2">{session.gym}</h1>
-                      <p className="text-gray-400">{formatDate(session.date)}</p>
+                      <h1 className="text-xl font-semibold text-text-primary mb-1">{session.gym}</h1>
+                      <p className="text-sm text-text-tertiary">{formatDate(session.date)}</p>
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    <span className={`px-2.5 py-1 rounded-md text-xs font-medium ring-1 ring-inset ${
                       session.gi_type === 'gi' 
-                        ? 'bg-blue-900/50 text-blue-200 border border-blue-700' 
-                        : 'bg-purple-900/50 text-purple-200 border border-purple-700'
+                        ? 'bg-accent-blue/10 text-accent-blue ring-accent-blue/20' 
+                        : 'bg-accent-purple/10 text-accent-purple ring-accent-purple/20'
                     }`}>
                       {session.gi_type === 'gi' ? 'Gi' : 'No-Gi'}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3 text-gray-300">
+                  <div className="flex items-center gap-4 text-sm text-text-secondary">
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                       <span>{session.profiles.display_name}</span>
                     </div>
-                    <span className="text-gray-600">•</span>
+                    <span className="text-border-strong">•</span>
                     <div className="flex items-center gap-2">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span>{session.duration_min} minutes</span>
+                      <span className="tabular-nums">{session.duration_min} min</span>
                     </div>
                   </div>
                 </div>
@@ -192,15 +192,15 @@ export default function SessionDetailPage() {
                 <div className="p-6 space-y-6">
                   {session.notes && (
                     <div>
-                      <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">
+                      <h2 className="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-3">
                         Notes
                       </h2>
-                      <p className="text-gray-300 whitespace-pre-wrap">{session.notes}</p>
+                      <p className="text-sm text-text-secondary leading-relaxed whitespace-pre-wrap">{session.notes}</p>
                     </div>
                   )}
 
-                  <div className="pt-6 border-t border-gray-700">
-                    <p className="text-sm text-gray-500">
+                  <div className="pt-6 border-t border-border-subtle">
+                    <p className="text-xs text-text-tertiary">
                       Logged on {formatDate(session.created_at)} at {formatTime(session.created_at)}
                     </p>
                   </div>
@@ -208,11 +208,11 @@ export default function SessionDetailPage() {
 
                 {/* Actions */}
                 {canDelete && (
-                  <div className="p-6 border-t border-gray-700 bg-gray-800/50">
+                  <div className="p-4 border-t border-border-subtle bg-surface-higher">
                     <button
                       onClick={handleDelete}
                       disabled={deleting}
-                      className="text-red-400 hover:text-red-300 disabled:text-gray-600 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                      className="text-xs text-red-400 hover:text-red-300 disabled:text-text-tertiary disabled:cursor-not-allowed transition-colors font-medium"
                     >
                       {deleting ? 'Deleting...' : 'Delete Session'}
                     </button>

@@ -15,79 +15,87 @@ export function Navigation() {
   }
 
   const navItems = [
-    { href: '/feed', label: 'Feed' },
-    { href: '/my-log', label: 'My Log' },
-    { href: '/sessions/new', label: 'Log Session', primary: true },
+    { href: '/feed', label: 'Feed', icon: '⚡' },
+    { href: '/my-log', label: 'Log', icon: '📓' },
   ]
 
   return (
-    <nav className="bg-gi-darker border-b border-gray-800 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-8">
-            <Link href="/feed" className="text-xl font-bold text-white tracking-tight">
-              BJJ Log
-            </Link>
-            <div className="hidden md:flex items-center gap-4">
+    <nav className="sticky top-0 z-50 border-b border-border-subtle bg-surface-base/95 backdrop-blur supports-[backdrop-filter]:bg-surface-base/80">
+      <div className="mx-auto max-w-md px-4">
+        {/* Desktop/Tablet Header */}
+        <div className="flex h-14 items-center justify-between">
+          <Link href="/feed" className="text-sm font-semibold text-text-primary tracking-tight">
+            BJJ Log
+          </Link>
+          
+          {/* Desktop Nav */}
+          <div className="hidden sm:flex items-center gap-1.5">
+            <div className="flex items-center gap-0.5 rounded-lg bg-surface-elevated p-0.5">
               {navItems.map((item) => (
-                item.primary ? (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-md hover:shadow-lg"
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      pathname === item.href
-                        ? 'bg-gi-dark text-gold-400 border border-gold-600/30'
-                        : 'text-gray-300 hover:bg-gi-dark hover:text-white'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`
+                    relative px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200
+                    ${pathname === item.href
+                      ? 'bg-surface-higher text-text-primary shadow-sm'
+                      : 'text-text-tertiary hover:text-text-secondary'
+                    }
+                  `}
+                >
+                  {item.label}
+                </Link>
               ))}
             </div>
+            
+            <Link
+              href="/sessions/new"
+              className="ml-2 flex items-center gap-1.5 rounded-lg bg-accent-gold px-3 py-1.5 text-xs font-medium text-surface-base transition-colors hover:bg-accent-gold-hover"
+            >
+              <span>+</span>
+              <span>New</span>
+            </Link>
           </div>
+
           <button
             onClick={handleSignOut}
-            className="text-gray-400 hover:text-gold-400 text-sm transition-colors font-medium"
+            className="hidden sm:block text-xs text-text-tertiary hover:text-text-secondary transition-colors"
           >
-            Sign Out
+            Sign out
           </button>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-gray-800 px-4 py-3 flex gap-2">
-        {navItems.map((item) => (
-          item.primary ? (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex-1 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-white px-4 py-2 rounded-lg font-medium text-center transition-all text-sm"
-            >
-              {item.label}
-            </Link>
-          ) : (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium text-center transition-colors ${
-                pathname === item.href
-                  ? 'bg-gi-dark text-gold-400 border border-gold-600/30'
-                  : 'text-gray-300 hover:bg-gi-dark hover:text-white'
-              }`}
-            >
-              {item.label}
-            </Link>
-          )
-        ))}
+        {/* Mobile Bottom Nav */}
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 border-t border-border-subtle bg-surface-base/95 backdrop-blur supports-[backdrop-filter]:bg-surface-base/80 px-4 pb-safe">
+          <div className="mx-auto max-w-md">
+            <div className="grid grid-cols-3 gap-2 py-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`
+                    flex flex-col items-center gap-1 rounded-lg py-2 transition-colors
+                    ${pathname === item.href
+                      ? 'text-text-primary'
+                      : 'text-text-tertiary active:bg-surface-elevated'
+                    }
+                  `}
+                >
+                  <span className="text-base">{item.icon}</span>
+                  <span className="text-xs font-medium">{item.label}</span>
+                </Link>
+              ))}
+              
+              <Link
+                href="/sessions/new"
+                className="flex flex-col items-center gap-1 rounded-lg bg-accent-gold py-2 text-surface-base transition-colors active:bg-accent-gold-hover"
+              >
+                <span className="text-base font-semibold">+</span>
+                <span className="text-xs font-medium">Log</span>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   )

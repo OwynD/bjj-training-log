@@ -64,36 +64,36 @@ export default function FeedPage() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
-        <div className="max-w-4xl mx-auto pt-8">
+      <div className="min-h-screen bg-surface-base pb-24 md:pb-4">
+        <div className="max-w-4xl mx-auto px-4 pt-24 md:pt-8">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2">Group Feed</h1>
-            <p className="text-gray-400">See what everyone&apos;s been training</p>
+            <h1 className="text-2xl font-semibold text-text-primary mb-1">Feed</h1>
+            <p className="text-sm text-text-tertiary">See what everyone&apos;s been training</p>
           </div>
 
           {/* Feed */}
           {loading ? (
-            <div className="text-center py-12">
-              <div className="inline-block w-8 h-8 border-4 border-gray-700 border-t-gold-500 rounded-full animate-spin"></div>
-              <p className="text-gray-400 mt-4">Loading feed...</p>
+            <div className="text-center py-16">
+              <div className="inline-block w-6 h-6 border-2 border-border-subtle border-t-accent-gold rounded-full animate-spin"></div>
+              <p className="text-sm text-text-tertiary mt-3">Loading feed...</p>
             </div>
           ) : sessions.length === 0 ? (
-            <div className="text-center py-12 bg-gi-darker rounded-lg border border-gray-800">
-              <svg className="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            <div className="text-center py-16 bg-surface-elevated rounded-lg border border-border-subtle">
+              <svg className="w-12 h-12 text-text-tertiary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              <h3 className="text-xl font-semibold text-white mb-2">No training sessions yet</h3>
-              <p className="text-gray-400 mb-6">Be the first to log a training session!</p>
+              <h3 className="text-sm font-medium text-text-primary mb-1">No training sessions yet</h3>
+              <p className="text-sm text-text-tertiary mb-6">Be the first to log a training session!</p>
               <Link
                 href="/sessions/new"
-                className="inline-block bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-white font-semibold py-2 px-6 rounded-lg transition-all shadow-md hover:shadow-lg"
+                className="inline-flex items-center gap-2 bg-accent-gold hover:bg-accent-gold/90 text-surface-base text-sm font-medium px-4 py-2 rounded-md transition-colors"
               >
                 Log a Session
               </Link>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-2">
               {sessions.map((session) => (
                 <SessionCard
                   key={session.id}

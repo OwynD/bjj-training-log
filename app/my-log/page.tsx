@@ -89,58 +89,58 @@ function MyLogContent() {
   const nogiSessions = sessions.filter(s => s.gi_type === 'nogi').length
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
-      <div className="max-w-4xl mx-auto pt-8">
+    <div className="min-h-screen bg-surface-base pb-24 md:pb-4">
+      <div className="max-w-4xl mx-auto px-4 pt-24 md:pt-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">My Training Log</h1>
-          <p className="text-gray-400">Track your progress and view your training history</p>
+          <h1 className="text-2xl font-semibold text-text-primary mb-1">My Log</h1>
+          <p className="text-sm text-text-tertiary">Track your progress and view your training history</p>
         </div>
 
         {/* Stats */}
         {!loading && totalSessions > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
-              <div className="text-2xl font-bold text-white mb-1">{totalSessions}</div>
-              <div className="text-sm text-gray-400">Total Sessions</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+            <div className="bg-surface-elevated rounded-lg p-4 border border-border-subtle">
+              <div className="text-2xl font-semibold tabular-nums text-text-primary mb-0.5">{totalSessions}</div>
+              <div className="text-xs text-text-tertiary">Total Sessions</div>
             </div>
-            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
-              <div className="text-2xl font-bold text-white mb-1">{Math.round(totalMinutes / 60)}h</div>
-              <div className="text-sm text-gray-400">Total Time</div>
+            <div className="bg-surface-elevated rounded-lg p-4 border border-border-subtle">
+              <div className="text-2xl font-semibold tabular-nums text-text-primary mb-0.5">{Math.round(totalMinutes / 60)}h</div>
+              <div className="text-xs text-text-tertiary">Total Time</div>
             </div>
-            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
-              <div className="text-2xl font-bold text-belt-blue mb-1">{giSessions}</div>
-              <div className="text-sm text-gray-400">Gi Sessions</div>
+            <div className="bg-surface-elevated rounded-lg p-4 border border-border-subtle">
+              <div className="text-2xl font-semibold tabular-nums text-accent-blue mb-0.5">{giSessions}</div>
+              <div className="text-xs text-text-tertiary">Gi Sessions</div>
             </div>
-            <div className="bg-gi-darker rounded-lg p-4 border border-gray-800">
-              <div className="text-2xl font-bold text-belt-purple mb-1">{nogiSessions}</div>
-              <div className="text-sm text-gray-400">No-Gi Sessions</div>
+            <div className="bg-surface-elevated rounded-lg p-4 border border-border-subtle">
+              <div className="text-2xl font-semibold tabular-nums text-accent-purple mb-0.5">{nogiSessions}</div>
+              <div className="text-xs text-text-tertiary">No-Gi Sessions</div>
             </div>
           </div>
         )}
 
         {/* Sessions List */}
         {loading ? (
-          <div className="text-center py-12">
-            <div className="inline-block w-8 h-8 border-4 border-gray-700 border-t-gold-500 rounded-full animate-spin"></div>
-            <p className="text-gray-400 mt-4">Loading your sessions...</p>
+          <div className="text-center py-16">
+            <div className="inline-block w-6 h-6 border-2 border-border-subtle border-t-accent-gold rounded-full animate-spin"></div>
+            <p className="text-sm text-text-tertiary mt-3">Loading your sessions...</p>
           </div>
         ) : sessions.length === 0 ? (
-          <div className="text-center py-12 bg-gi-darker rounded-lg border border-gray-800">
-            <svg className="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <div className="text-center py-16 bg-surface-elevated rounded-lg border border-border-subtle">
+            <svg className="w-12 h-12 text-text-tertiary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <h3 className="text-xl font-semibold text-white mb-2">No sessions yet</h3>
-            <p className="text-gray-400 mb-6">Start logging your training to track your progress!</p>
+            <h3 className="text-sm font-medium text-text-primary mb-1">No sessions yet</h3>
+            <p className="text-sm text-text-tertiary mb-6">Start logging your training to track your progress!</p>
             <Link
               href="/sessions/new"
-              className="inline-block bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-white font-semibold py-2 px-6 rounded-lg transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 bg-accent-gold hover:bg-accent-gold/90 text-surface-base text-sm font-medium px-4 py-2 rounded-md transition-colors"
             >
               Log Your First Session
             </Link>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-2">
             {sessions.map((session) => (
               <SessionCard
                 key={session.id}
@@ -169,9 +169,9 @@ export default function MyLogPage() {
     <>
       <Navigation />
       <Suspense fallback={
-        <div className="min-h-screen bg-gradient-to-b from-gi-black to-gi-dark p-4">
-          <div className="max-w-4xl mx-auto pt-8 text-center">
-            <div className="inline-block w-8 h-8 border-4 border-gray-700 border-t-gold-500 rounded-full animate-spin"></div>
+        <div className="min-h-screen bg-surface-base pb-24 md:pb-4">
+          <div className="max-w-4xl mx-auto px-4 pt-24 md:pt-8 text-center">
+            <div className="inline-block w-6 h-6 border-2 border-border-subtle border-t-accent-gold rounded-full animate-spin"></div>
           </div>
         </div>
       }>

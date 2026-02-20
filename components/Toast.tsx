@@ -19,31 +19,31 @@ export function Toast({ message, type = 'success', onClose, duration = 3000 }: T
   }, [duration, onClose])
 
   const bgColor = {
-    success: 'bg-green-900/90 border-green-700',
-    error: 'bg-red-900/90 border-red-700',
-    info: 'bg-blue-900/90 border-blue-700',
+    success: 'bg-green-500/10 border-green-500/20',
+    error: 'bg-red-500/10 border-red-500/20',
+    info: 'bg-accent-blue/10 border-accent-blue/20',
   }[type]
 
   const textColor = {
-    success: 'text-green-200',
-    error: 'text-red-200',
-    info: 'text-blue-200',
+    success: 'text-green-400',
+    error: 'text-red-400',
+    info: 'text-accent-blue',
   }[type]
 
   return (
     <div className="fixed bottom-4 right-4 z-50 animate-slide-up">
-      <div className={`${bgColor} ${textColor} border rounded-lg px-6 py-4 shadow-lg flex items-center gap-3 min-w-[300px]`}>
+      <div className={`${bgColor} ${textColor} border rounded-md px-4 py-3 shadow-lg flex items-center gap-3 min-w-[300px] backdrop-blur-sm`}>
         {type === 'success' && (
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
         )}
         {type === 'error' && (
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
           </svg>
         )}
-        <span className="font-medium">{message}</span>
+        <span className="text-sm font-medium">{message}</span>
         <button
           onClick={onClose}
           className="ml-2 hover:opacity-70 transition-opacity"
